@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avaraa Kommunity · Find your tribe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Instrument+Serif:ital@1&family=Outfit:wght@400;500;600&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bT:#159aa1;--fT:#fffdf0;--bB:#ffee99;--fB:#0d5a5f;--y:#ffd91a;--card:#fffbe6;--ink:#10393c;--line:#159aa1}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bB:#1b2e2d;--fB:#ffee99;--card:#27403d;--ink:#fffdf0;--line:#ffee99}}
+:root[data-theme="dark"]{--bB:#1b2e2d;--fB:#ffee99;--card:#27403d;--ink:#fffdf0;--line:#ffee99}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bT);font:500 18px/1.55 Outfit,system-ui,sans-serif;color:var(--fT)}
+img{max-width:100%;height:auto}
+h1,h2,h3{margin:0;font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:1.05}
+h2{font-size:clamp(36px,7vw,56px);margin-bottom:22px}
+.script{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:1.55em;line-height:1}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+section{position:relative;padding:68px 0 60px;overflow:hidden}
+.t{background:var(--bT);color:var(--fT)}
+.b{background:var(--bB);color:var(--fB)}
+.sc{position:absolute;left:0;right:0;top:-1px;height:10px;background:radial-gradient(circle at 10px 0,var(--from) 9px,#0000 10px) 0 0/20px 10px repeat-x}
+.b>.sc{--from:var(--bT)}.t>.sc{--from:var(--bB)}
+.sk{filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 8px 8px rgba(0,0,0,.25))}
+.st{position:absolute;pointer-events:none;z-index:1;transform:rotate(var(--r,0deg))}
+.fl{animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-12px) rotate(calc(var(--r,0deg) + 4deg))}}
+.btn{display:inline-block;background:var(--y);color:#10393c;font:600 17px Outfit,sans-serif;border:0;border-radius:99px;padding:14px 26px;text-decoration:none;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.25);transition:transform .15s}
+.btn:hover{transform:rotate(-2deg) scale(1.04)}.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.alt{background:#fffdf0}.btn.sm{padding:9px 18px;font-size:15px}
+.card{background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:18px;padding:20px}
+.tape{display:inline-block;background:#e9dca0;color:#4a2f1d;font:400 22px Anton,Impact,sans-serif;padding:6px 18px;transform:rotate(-2deg);clip-path:polygon(0 8%,3% 0,97% 4%,100% 0,99% 94%,100% 100%,3% 96%,0 100%)}
+.pill{display:inline-block;border-radius:99px;padding:5px 14px;font-weight:600;font-size:14px;border:1.5px solid currentColor}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bT);border-bottom:2px dashed rgba(255,253,240,.45)}
+nav .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.logo{font:400 25px Anton,Impact,sans-serif;color:var(--y);text-decoration:none;letter-spacing:.02em;line-height:1}
+.logo small{display:block;font:600 8px Outfit;letter-spacing:.45em;color:var(--fT);margin-top:2px}
+nav ul{display:none;list-style:none;margin:0 auto;padding:0;gap:22px}
+nav ul a{text-decoration:none;font-weight:600}
+nav .btn{margin-left:auto;padding:9px 18px;font-size:15px}
+@media(min-width:760px){nav ul{display:flex}}
+.hero{position:relative;padding:44px 0 120px;text-align:center;overflow:hidden}
+.hero h1{font:400 clamp(84px,21vw,190px)/.88 Anton,Impact,sans-serif;color:var(--y);margin:10px 0 18px;text-shadow:5px 5px 0 rgba(0,0,0,.18)}
+.lead{font-size:20px;max-width:30em;margin:0 auto 26px}
+.hero .btn{margin:0 5px 12px}
+.bandw{background:var(--bT);overflow:hidden;padding:14px 0 12px}
+.band{background:var(--y);color:#10393c;transform:rotate(-1.4deg);width:110%;margin-left:-5%;padding:10px 0;white-space:nowrap;overflow:hidden;font:400 24px Anton,Impact,sans-serif;letter-spacing:.04em}
+.mq{display:inline-flex;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+.chip{font:600 15px Outfit;padding:9px 18px;border-radius:99px;border:2px solid var(--fB);background:none;color:var(--fB);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--bT);border-color:var(--bT);color:#fff}
+.trips{display:grid;grid-auto-flow:column;grid-auto-columns:max(262px,calc((100% - 48px)/4));gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 2px 16px;margin-inline:calc(50% - min(570px,50vw - 20px));scrollbar-width:thin}
+.trip{scroll-snap-align:start}
+.trip .foot{gap:8px}.trip .foot b{font-size:15px;white-space:nowrap}.trip .foot .btn.sm{padding:8px 12px;font-size:14px;white-space:nowrap}
+.trip[hidden]{display:none}
+.trip .art{position:relative;height:220px;background:var(--bT);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.trip .art img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;top:10px;left:10px;background:var(--y);color:#10393c;font:400 16px Anton;padding:4px 12px;border-radius:99px;transform:rotate(-6deg)}
+.trip h3{font-size:34px;margin-bottom:8px}
+.trip .pill{margin:0 4px 10px 0}
+.trip p{margin:0 0 14px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:2px dashed var(--line);padding-top:14px}
+.foot .btn{background:var(--bT);color:#fff;box-shadow:none}
+.gh{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-bottom:26px}
+.gh img{width:min(300px,70%)}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;font:600 16px Outfit;padding:12px 6px;border-radius:99px;border:2px solid var(--fT);background:none;color:var(--fT);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--fT);color:#0d5a5f}
+.day{display:none}.day.on{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+.dc{flex:1 1 280px}.day figure{flex:0 1 210px;margin:0 auto;position:relative}
+.day h3{font-size:clamp(30px,6vw,42px);margin:6px 0 14px}
+.day ul{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:10px}
+.day li{padding-left:26px;position:relative}
+.day li:before{content:"✺";position:absolute;left:0;color:var(--y)}
+.chipr{display:flex;flex-wrap:wrap;gap:8px}
+.pol{background:#fffbe6;padding:8px 8px 12px;border-radius:3px;box-shadow:0 8px 0 rgba(0,0,0,.18);transform:rotate(2.5deg);color:#4a2f1d;font-size:14px;text-align:center;position:relative}
+.pol img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;margin-bottom:6px}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:22px 16px;width:100%;margin-top:6px}
+.gal .pol:nth-child(even){transform:rotate(-2.5deg)}
+.hp{display:flex;justify-content:center;gap:12px;margin:46px auto 0;max-width:640px}
+.hp .pol{width:calc((100% - 24px)/3);max-width:200px;padding:6px 6px 8px;font-size:12px}
+.hp .pol:nth-child(1){transform:rotate(-5deg)}.hp .pol:nth-child(2){transform:rotate(2deg) translateY(14px)}.hp .pol:nth-child(3){transform:rotate(-2deg)}
+.pol .sk{position:absolute;right:-16px;bottom:-18px;width:46px;aspect-ratio:auto;object-fit:contain;margin:0}
+.two{display:grid;gap:16px;margin:46px 0 40px}
+@media(min-width:640px){.two{grid-template-columns:1fr 1fr}}
+.two h3{font-size:34px;margin-bottom:12px}
+.two ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.two li{padding-left:28px;position:relative}
+.two li:before{position:absolute;left:0;font-weight:700}
+.yes li:before{content:"✔";color:#1f8d4a}.no li:before{content:"✕";color:#c4402a}
+.prices{display:grid;gap:16px;margin-bottom:28px}
+.prices.one{grid-template-columns:1fr}
+@media(min-width:640px){.prices{grid-template-columns:1fr 1fr}}
+.price{background:var(--bB);color:var(--fB);border:4px solid var(--fT);border-radius:6px;padding:20px;text-align:center}
+.price b{display:block;font:400 clamp(46px,9vw,60px) "DM Serif Display",serif;line-height:1}
+.price small{display:block;font-size:13px;margin-bottom:10px}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0 0 20px;display:grid;gap:12px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.steps li:before{content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--y);color:#10393c;display:grid;place-items:center;font:400 24px "DM Serif Display",serif}
+.warn{font-size:15px;background:rgba(0,0,0,.2);padding:12px 16px;border-radius:12px;margin:0}
+.who{display:grid;gap:14px}
+@media(min-width:640px){.who{grid-template-columns:1fr 1fr}}
+.who .card:nth-child(odd){transform:rotate(-.8deg)}.who .card:nth-child(even){transform:rotate(.8deg)}
+.sure{margin-top:28px;background:var(--y);color:#10393c;font-weight:600;padding:16px 20px;border-radius:6px;text-align:center;transform:rotate(-1deg)}
+.hostsec{padding:72px 0 90px}
+.hostcard{position:relative;max-width:600px;margin:0 auto;--r:11px;--g:34px}
+.stampc{position:relative;background:#ffee99}
+.stampc:before,.stampc:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:4}
+.stampc:before{background:radial-gradient(circle var(--r) at 50% 0,var(--bT) 96%,#0000) 0 0/var(--g) var(--r) round no-repeat,radial-gradient(circle var(--r) at 50% 100%,var(--bT) 96%,#0000) 0 100%/var(--g) var(--r) round no-repeat}
+.stampc:after{background:radial-gradient(circle var(--r) at 0 50%,var(--bT) 96%,#0000) 0 0/var(--r) var(--g) no-repeat round,radial-gradient(circle var(--r) at 100% 50%,var(--bT) 96%,#0000) 100% 0/var(--r) var(--g) no-repeat round}
+.htext{position:relative;z-index:2;background:#ffee99;color:#0d5a5f;padding:56px 44px 78px;clip-path:polygon(0 0,100% 0,100% calc(100% - 34px),0 100%)}
+.hi{font:italic 400 clamp(40px,9vw,58px)/1 "Instrument Serif",Georgia,serif;color:#231f20}
+.htext h2{font:400 clamp(44px,11.5vw,78px)/.95 "DM Serif Display",Georgia,serif;letter-spacing:-.05em;color:#231f20;margin:6px 0 28px}
+.nm{position:relative;display:inline-block;white-space:nowrap}
+.nm img{position:absolute;right:-.6em;top:-.55em;width:.95em;transform:rotate(8deg);filter:drop-shadow(0 4px 4px rgba(0,0,0,.2))}
+.htext p{margin:0 0 18px;font:500 17px/1.62 Outfit,sans-serif;text-align:justify}
+.hchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.hchips .pill{font-size:13px;border-color:#0d5a5f}
+.hphoto{position:relative;z-index:1;margin-top:-34px}
+.hphoto img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.jn{position:relative;height:0;z-index:6}
+.coco{position:absolute;left:-36px;top:-54px;width:clamp(78px,17%,104px);transform:rotate(-6deg);filter:drop-shadow(0 5px 5px rgba(0,0,0,.28))}
+.hibi{position:absolute;right:-34px;top:clamp(200px,36%,260px);width:clamp(58px,13%,78px);z-index:6;transform:rotate(8deg);filter:drop-shadow(0 4px 5px rgba(0,0,0,.28))}
+@media(min-width:861px){
+.hostcard{max-width:none;margin-inline:calc(50% - min(470px,50vw - 20px))}
+.stampc{display:grid;grid-template-columns:1.12fr 1fr}
+.htext{padding:60px 44px 60px 56px;clip-path:polygon(0 0,100% 0,calc(100% - 36px) 100%,0 100%)}
+.htext h2{font-size:clamp(44px,5.4vw,68px)}
+.hphoto{margin:0 0 0 -36px}
+.hphoto img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+.jn{position:absolute;left:calc(53% - 70px);bottom:0;height:0}
+.coco{left:0;top:-104px;width:100px;max-width:none}
+.hibi{top:64px;right:-30px}
+}
+@media(max-width:520px){.htext{padding:44px 28px 70px}.htext p{text-align:left;font-size:16px}.hibi{right:-22px}.coco{left:-14px}}
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:26px 14px;align-items:center}
+@media(min-width:640px){.wall{grid-template-columns:repeat(3,1fr)}}
+.wall figure{margin:0;text-align:center;font-size:14px}
+.wall figure>img{max-height:210px;width:auto;margin:0 auto 6px;display:block}
+.wall figure:nth-child(odd){transform:rotate(-3deg)}.wall figure:nth-child(even){transform:rotate(2.5deg)}
+details{border-bottom:2px dashed currentColor;padding:16px 0}
+summary{cursor:pointer;font:400 25px "DM Serif Display",serif;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font:600 30px Outfit;color:var(--bT);transition:transform .2s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:12px 0 0;max-width:60ch}
+.cta{text-align:center}
+.cta .tag{display:inline-flex;align-items:center;gap:8px;background:#10393c;color:#fff3b0;font-weight:600;font-size:14px;padding:6px 18px 6px 8px;border-radius:99px;margin-bottom:18px}
+.cta .tag img{width:44px}
+form{text-align:left;display:grid;gap:12px;max-width:480px;margin:26px auto 0}
+label{font-weight:600;font-size:15px;display:grid;gap:5px}
+input,select{font:500 17px Outfit,sans-serif;padding:13px 14px;border-radius:12px;border:2px solid #fffdf0;background:var(--card);color:var(--ink);width:100%}
+form .btn{width:100%;margin-top:6px}
+footer{text-align:center;padding:50px 0 40px}
+footer .logo{font-size:36px;color:var(--bT)}footer .logo small{color:var(--fB)}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:20px 0}
+.stamp{width:110px;display:block;margin:0 auto 16px;transform:rotate(-8deg);opacity:.85}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .stamp{filter:invert(1)}}
+:root[data-theme="dark"] .stamp{filter:invert(1)}
+.hs{display:none}@media(min-width:700px){.hs{display:block}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+.pill.dur{background:var(--y);color:#10393c;border-color:#10393c}
+:root{--bW:#fff;--fW:#10393c}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bW:#142524;--fW:#fffdf0}}
+:root[data-theme="dark"]{--bW:#142524;--fW:#fffdf0}
+.w{background:var(--bW);color:var(--fW)}
+.w>.sc{--from:var(--bT)}
+.w .script{color:var(--bT)}
+.lede{margin:-8px 0 26px;font-size:19px}
+.rl{display:grid;grid-auto-flow:column;grid-auto-columns:max(206px,calc((100% - 64px)/5));gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px 4px 34px;margin-inline:calc(50% - min(570px,50vw - 20px));scrollbar-width:thin}
+.reel{margin:0;scroll-snap-align:start}
+.rf{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--bT);box-shadow:0 8px 0 rgba(16,57,60,.14),0 14px 22px rgba(0,0,0,.16)}
+.rf>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rf:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(8,40,43,.8));pointer-events:none;transition:opacity .2s}
+.cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;color:#fff;transition:opacity .2s}
+.cap b{display:block;font:400 25px/1.05 "DM Serif Display",Georgia,serif;margin-bottom:3px}
+.cap span{font-size:13px;opacity:.92}
+.soon{position:absolute;z-index:3;top:12px;left:12px;background:var(--y);color:#10393c;font:600 12px Outfit,sans-serif;padding:4px 11px;border-radius:99px}
+.play{display:none;position:absolute;z-index:3;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--y);box-shadow:0 4px 0 rgba(0,0,0,.25);place-items:center;transition:opacity .2s}
+.play:before{content:"";border-left:18px solid #10393c;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.reel.live .play{display:grid}.reel.live .rf{cursor:pointer}
+.rf video,.rf iframe{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;z-index:1}
+.reel.on .rf video,.reel.on .rf iframe{display:block}
+.reel.on .rf:after,.reel.on .cap,.reel.on .play{opacity:0;pointer-events:none}
+.fm{overflow:hidden;margin-top:30px;padding:12px 0 28px}
+.ft{display:flex;gap:16px;width:max-content;animation:fmq 70s linear infinite}
+.fm:hover .ft,.fm:active .ft{animation-play-state:paused}
+@keyframes fmq{to{transform:translateX(calc(-50% - 8px))}}
+.fc{position:relative;flex:none;width:200px;aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:0 8px 0 rgba(16,57,60,.14);transform:rotate(-1.2deg)}
+.fc:nth-child(even){transform:rotate(1.2deg);margin-top:14px}
+.fc img{width:100%;height:100%;object-fit:cover;display:block}
+.fc span{position:absolute;left:10px;bottom:10px;background:#fff;color:#10393c;font:600 13px Outfit,sans-serif;padding:5px 12px;border-radius:99px}
+@media(prefers-reduced-motion:reduce){.fm{overflow-x:auto}}
+.wg{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+.wc{position:relative;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:20px;padding:22px 20px 20px}
+.wc img{display:block;height:58px;width:auto;max-width:96px;object-fit:contain;margin-bottom:14px}
+.wc .no{position:absolute;top:14px;right:18px;font:400 30px Anton,Impact,sans-serif;color:var(--bT);opacity:.38}
+.wc h3{font-size:24px;line-height:1.1;margin-bottom:8px}
+.wc p{margin:0;font-size:16px;line-height:1.5}
+@media(max-width:860px){.wg{grid-template-columns:1fr 1fr}}
+.swipe{display:none;text-align:center;margin:0;opacity:.8}
+@media(max-width:600px){
+section{padding:52px 0 46px}
+.wrap{padding:0 22px}
+h2{font-size:clamp(32px,9.5vw,40px);margin-bottom:16px}
+body{font-size:17px}
+nav .wrap{height:56px}
+.logo{font-size:23px}
+nav .btn{padding:8px 16px;font-size:14px}
+.hero{padding:30px 0 150px}
+.hero h1{font-size:clamp(76px,23vw,100px);margin:6px 0 14px}
+.lead{font-size:18px;margin-bottom:22px}
+.hero .btn{display:block;width:fit-content;margin:0 auto 12px}
+.hero>img.st:nth-of-type(1){width:58px!important;left:-4px!important;top:78px!important}
+.hero>img.st:nth-of-type(2){width:46px!important}
+.hero>img.st:nth-of-type(4){width:62px!important;left:14px!important;bottom:34px!important}
+.hero>img.st:nth-of-type(5){width:92px!important;right:6px!important;bottom:30px!important}
+.hp{margin-top:34px;gap:8px;padding:0 6px}
+.band{font-size:20px;padding:8px 0}
+.chips{gap:8px;margin-bottom:20px}
+.chip{padding:8px 14px;font-size:14px}
+.trips{grid-auto-columns:min(286px,80%);gap:14px}
+.swipe{display:block}
+.trip .art{height:196px}
+.trip h3{font-size:30px}
+.gh img{width:min(250px,70%)}
+.tabs button{font-size:15px;padding:11px 4px}
+.two{margin:34px 0 28px}
+.two h3{font-size:30px}
+.card{padding:18px}
+.gal{gap:22px 14px;padding:0 4px}
+.gal>.pol:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 7px);justify-self:center}
+.pol .sk{width:46px!important;right:-8px;bottom:-12px}
+.pol{font-size:13px}
+.warn{font-size:14px;padding:11px 14px}
+.who{gap:12px}
+.who .card{padding:16px 18px;font-size:17px}
+.sure{font-size:16px;padding:14px 16px}
+.hostsec{padding:56px 0 64px}
+.hchips{gap:6px;margin-top:20px}
+.hchips .pill{font-size:12px;padding:4px 10px}
+.wall{gap:22px 16px;padding:0 4px}
+.wall figure:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 8px);justify-self:center}
+summary{font-size:22px}
+details{padding:14px 0}
+.cta .tag{font-size:13px}
+form{margin-top:22px}
+footer{padding:40px 0 34px}
+}
+
+@media(max-width:600px){
+.lede{font-size:17px;margin-bottom:20px}
+.rl{grid-auto-columns:min(214px,62%);gap:14px}
+.cap b{font-size:22px}
+.fc{width:164px}
+.ft{gap:12px;animation-duration:60s}
+.wg{grid-template-columns:1fr;gap:12px;margin-top:22px}
+.wc{display:grid;grid-template-columns:56px 1fr;gap:0 14px;padding:14px 16px;align-items:center;border-radius:18px}
+.wc img{grid-row:1/3;height:46px;max-width:56px;margin:0}
+.wc .no{display:none}
+.wc h3{font-size:20px;margin:0 0 3px}
+.wc p{font-size:15px;line-height:1.45}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a class="logo" href="#top">AVARAA<small>KOMMUNITY</small></a>
+<ul><li><a href="#trips">Trips</a></li><li><a href="#goa">Goa plan</a></li><li><a href="#why">Why Avaraa</a></li><li><a href="#moments">Moments</a></li><li><a href="#faq">FAQ</a></li></ul>
+<a class="btn" href="#spot">Save my spot</a>
+</div></nav>
+
+<header class="hero t" id="top">
+<img class="st sk fl" style="--r:-8deg;left:-1%;top:70px;width:clamp(70px,13vw,130px)" src="assets/img-01.webp" alt="">
+<img class="st sk fl" style="--r:10deg;right:2%;top:60px;width:clamp(46px,7vw,70px);animation-delay:-2s" src="assets/img-02.webp" alt="">
+<img class="st sk fl hs" style="--r:-10deg;left:12%;top:36%;width:60px;animation-delay:-1s" src="assets/img-03.webp" alt="">
+<img class="st sk fl" style="--r:-6deg;left:3%;bottom:26px;width:clamp(70px,13vw,120px);animation-delay:-3s" src="assets/img-04.webp" alt="">
+<img class="st sk fl" style="--r:6deg;right:1%;bottom:12px;width:clamp(110px,21vw,200px);animation-delay:-1.5s" src="assets/img-05.webp" alt="">
+<img class="st sk fl hs" style="--r:8deg;right:16%;top:34%;width:46px;animation-delay:-4s" src="assets/img-06.webp" alt="">
+<div class="wrap">
+<div class="script">Avaraa Kommunity</div>
+<h1>FIND YOUR<br>TRIBE.</h1>
+<p class="lead">Hosted trips for 18–30 year-olds. Come solo, leave with friends and a very full camera roll.</p>
+<a class="btn" href="#trips">See upcoming trips</a><a class="btn alt" href="#spot">Join on WhatsApp</a>
+<div class="hp"><div class="pol"><img data-i="p1" alt="Friends toasting in a pool at night"><span>Pool party</span></div><div class="pol"><img data-i="p8" alt="Friends on a private yacht"><span>Yacht sunset</span></div><div class="pol"><img data-i="p2" alt="Girl petting a dog on the beach at sunset"><span>Beach days</span></div></div>
+</div>
+</header>
+<div class="bandw"><div class="band"><div class="mq" id="mq">GOA IS ONNN ✺ COORG ✺ VARKALA ✺ KASHMIR ✺ COME SOLO ✺ LEAVE WITH FRIENDS ✺ </div></div></div>
+
+<section class="b" id="trips"><div class="sc"></div>
+<img class="st sk hs" style="--r:12deg;right:-18px;top:24px;width:96px" src="assets/img-07.webp" alt="">
+<div class="wrap">
+<h2>Upcoming trips</h2>
+<p class="script" style="margin:-10px 0 18px">choose your vibe, we'll sort the tribe</p>
+<div class="chips" id="chips"><button class="chip" aria-pressed="true" data-f="all">All</button><button class="chip" aria-pressed="false" data-f="beach">Beach</button><button class="chip" aria-pressed="false" data-f="hills">Hills</button><button class="chip" aria-pressed="false" data-f="party">Party</button><button class="chip" aria-pressed="false" data-f="slow">Slow</button></div>
+<div class="trips">
+<article class="card trip" data-t="beach party"><div class="art"><img data-i="p8" alt="Friends on a private yacht in Goa"><span class="badge">Now booking</span></div><h3>Goa</h3><span class="pill dur">3 Nights, 4 Days</span><span class="pill">17–20 Oct</span><p>Offbeat Goa: pool party, mangroves, feni cocktails and a private yacht sunset.</p><div class="foot"><b>₹9,999</b><a class="btn sm" href="#goa">See the plan</a></div></article>
+<article class="card trip" data-t="hills slow"><div class="art"><img data-i="p12" alt="Misty green hills of Coorg"></div><h3>Coorg</h3><span class="pill dur">2 Nights, 3 Days</span><span class="pill">Dates TBA</span><p>Coffee estates, misty hills, a waterfall most people never find.</p><div class="foot"><b>Coming soon</b><a class="btn sm" data-trip="Coorg" href="#spot">Tell me first</a></div></article>
+<article class="card trip" data-t="beach slow"><div class="art"><img data-i="p13" alt="Varkala beach and cliffs"></div><h3>Varkala</h3><span class="pill dur">2 Nights, 3 Days</span><span class="pill">Dates TBA</span><p>Cliffside cafes, sunset yoga, backwaters, slow evenings.</p><div class="foot"><b>Coming soon</b><a class="btn sm" data-trip="Varkala" href="#spot">Tell me first</a></div></article>
+<article class="card trip" data-t="hills"><div class="art"><img data-i="p11" alt="Snowy road in Kashmir"></div><h3>Kashmir</h3><span class="pill dur">4 Nights, 5 Days</span><span class="pill">Dates TBA</span><p>The one trip on the calendar worth taking a few extra days for.</p><div class="foot"><b>Coming soon</b><a class="btn sm" data-trip="Kashmir" href="#spot">Tell me first</a></div></article>
+</div>
+<p class="swipe script">swipe for more &rarr;</p>
+</div></section>
+
+<section class="t" id="goa"><div class="sc"></div>
+<img class="st sk hs" style="--r:-12deg;right:-10px;top:30px;width:110px" src="assets/img-08.webp" alt="">
+<div class="wrap">
+<div class="gh"><img class="sk" src="assets/img-09.webp" alt="GOA"><div><div class="script">offbeat · now booking</div><span class="tape">17 Oct – 20 Oct</span><p style="margin:12px 0 0">3 Nights, 4 Days · <span style="white-space:nowrap">hosted by Aishwarya</span></p></div></div>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-d="0">Day 1</button><button role="tab" aria-selected="false" data-d="1">Day 2</button><button role="tab" aria-selected="false" data-d="2">Day 3</button></div>
+<div class="day on"><div class="dc"><div class="script">Day 1</div><h3>Check-in &amp; pool party</h3><ul><li>Check-in at the hotel</li><li>Welcome lunch: the first real icebreaker of the trip</li><li>Pool party, 2 hours (4 PM – 6 PM)</li><li>Jamming session: guitars, beats, bad singing, and surprisingly good chemistry</li><li>One pool, zero awkward silence</li></ul></div><div class="gal"><div class="pol"><img data-i="p1" alt="Friends toasting in the pool"><span>Pool party</span><img class="sk" src="assets/img-10.webp" alt="Goan fish thali" style="width:72px"></div><div class="pol"><img data-i="p5" alt="Uno cards played in a pool"><span>Uno, but wet</span></div><div class="pol"><img data-i="p10" alt="Friends jamming with a guitar at night"><span>Jamming session</span></div></div></div>
+<div class="day"><div class="dc"><div class="script">Day 2</div><h3>Chorão Island &amp; yacht</h3><ul><li>Breakfast</li><li>Chorão Island visit, the quieter side of Goa</li></ul><div class="chipr"><span class="pill">Mangrove boat ride</span><span class="pill">Trek</span><span class="pill">Feni tasting</span><span class="pill">Feni cocktail class</span></div><p style="font:400 26px 'DM Serif Display',serif;margin:18px 0 0">Then: a private yacht experience with a sunset evening.</p></div><div class="gal"><div class="pol"><img data-i="p9" alt="Friends kayaking through mangroves"><span>Mangrove kayaking</span></div><div class="pol"><img data-i="f7" alt="Friends on the Chorão ferry"><span>Chorão ferry</span></div><div class="pol"><img data-i="trek" alt="Friends trekking through a green forest"><span>Chorão trek</span></div><div class="pol"><img data-i="f2" alt="Friends toasting with copper cups at a feni tasting"><span>Feni tasting</span><img class="sk" src="assets/img-11.webp" alt="Feni cocktail"></div><div class="pol"><img data-i="f8" alt="Friends on a private yacht"><span>Private yacht</span></div></div></div>
+<div class="day"><div class="dc"><div class="script">Day 3</div><h3>Beach, lunch &amp; departure</h3><ul><li>Beach time: no agenda, just people</li><li>Lunch together before goodbyes</li><li>Check-out</li><li>Departure</li></ul></div><div class="gal"><div class="pol"><img data-i="f3" alt="Friends relaxing on beach towels"><span>Beach time</span><img class="sk" src="assets/img-05.webp" alt="Straw hat and coconut" style="width:78px"></div><div class="pol"><img data-i="p3" alt="Friends chatting on the beach"><span>No agenda, just people</span></div><div class="pol"><img data-i="f6" alt="Friends toasting at a beach shack at sunset"><span>Sunset o'clock</span></div></div></div>
+<div class="two">
+<div class="card yes"><h3>Included</h3><ul><li>3 nights accommodation</li><li>Breakfasts as per itinerary</li><li>Welcome lunch and farewell lunch</li><li>Pool party &amp; jamming session</li><li>Chorão Island experience</li><li>Yacht experience</li><li>Beach &amp; curated group activities</li><li>Trip hosting &amp; coordination</li></ul></div>
+<div class="card no"><h3>Not included</h3><ul><li>Travel to and from Goa (Goa-to-Goa package)</li><li>All dinners and other meals</li><li>Alcohol and drinks, unless mentioned as included</li><li>Shopping &amp; personal expenses</li><li>Activities not in the itinerary</li><li>Extras from personal requirements</li></ul></div>
+</div>
+<div class="prices one"><div class="price"><b>₹9,999</b><small>per person, incl. GST</small><span class="pill">Goa → Goa</span></div></div>
+<ol class="steps">
+<li><span><b>Save your spot.</b> Fill the form below or message us on WhatsApp.</span></li>
+<li><span><b>Pay the ₹5,000 advance.</b> We'll send payment details on WhatsApp. This blocks your slot.</span></li>
+<li><span><b>Pay the balance before the deadline.</b> Booking is confirmed only after full payment.</span></li>
+</ol>
+<p class="warn" style="margin-bottom:12px">Girls travelling solo: your host Aishwarya is with the group all trip, groups stay small, and you can message her on WhatsApp before you book.</p>
+<p class="warn">The advance is non-refundable in case of cancellation.</p>
+</div></section>
+
+<section class="w" id="reels"><div class="sc"></div><div class="wrap">
+<div class="script">goa, in motion</div>
+<h2>Watch the trip first</h2>
+<p class="lede">Tap a reel and see how the days actually feel.</p>
+<!-- TO ADD A REEL: on a card below, set data-v="reels/yourfile.mp4" (path or link to an mp4) or data-yt="YouTubeShortsID". The "Reel soon" tag disappears and the card becomes playable. -->
+<div class="rl">
+<figure class="reel" data-t="Pool party + jamming" data-v="" data-yt=""><div class="rf"><img data-i="p1" alt="Friends toasting in the pool"><span class="soon">Reel soon</span><span class="play"></span><div class="cap"><b>Pool party + jamming</b><span>Day 1</span></div></div></figure>
+<figure class="reel" data-t="Chorão Island" data-v="" data-yt=""><div class="rf"><img data-i="p9" alt="Friends kayaking through mangroves"><span class="soon">Reel soon</span><span class="play"></span><div class="cap"><b>Chorão Island</b><span>Day 2</span></div></div></figure>
+<figure class="reel" data-t="Yacht sunset" data-v="" data-yt=""><div class="rf"><img data-i="f8" alt="Friends on a private yacht"><span class="soon">Reel soon</span><span class="play"></span><div class="cap"><b>Yacht sunset</b><span>Day 2</span></div></div></figure>
+<figure class="reel" data-t="Beach, no agenda" data-v="" data-yt=""><div class="rf"><img data-i="m3" alt="Girl standing in the waves at sunset"><span class="soon">Reel soon</span><span class="play"></span><div class="cap"><b>Beach, no agenda</b><span>Day 3</span></div></div></figure>
+<figure class="reel" data-t="Thali time" data-v="" data-yt=""><div class="rf"><img data-i="m2" alt="Crumb-fried fish thali on a steel plate"><span class="soon">Reel soon</span><span class="play"></span><div class="cap"><b>Thali time</b><span>Goa on a plate</span></div></div></figure>
+</div>
+</div></section>
+
+<section class="t hostsec" id="host"><div class="sc" style="--from:var(--bW)"></div><div class="wrap">
+<div class="hostcard">
+<div class="stampc">
+<div class="htext">
+<div class="hi">Hiiiiiiii,</div>
+<h2><span class="nm">I'm Aishwarya<img src="assets/img-12.webp" alt=""></span></h2>
+<p>This trip is hosted by Aishwarya Prabhu, someone who's spent years travelling, hosting, and living between trips to Goa, figuring out what actually makes a trip good.</p>
+<p>We organise trips for 18 to 30 year-olds who want more than a checklist. If you love to party, you'll fit right in. If you're happiest outdoors or by the water, same thing. And if you're travelling solo and hoping to make real friends along the way, you'll love it here.</p>
+<p>Great for anyone who just wants good people, good places, and a few days that don't feel like a routine.</p>
+<div class="hchips"><span class="pill">Hosts the Goa trip</span><span class="pill">With the group all trip</span><span class="pill">Message her before you book</span></div>
+</div>
+<div class="jn"><img class="coco" src="assets/img-13.webp" alt=""></div>
+<div class="hphoto"><img data-i="aish" alt="Aishwarya Prabhu smiling with her arms stretched out on a rooftop at night, city lights behind her"></div>
+</div>
+<img class="hibi" src="assets/img-14.webp" alt="">
+</div>
+</div></section>
+
+<section class="b" id="faces"><div class="sc"></div>
+<div class="wrap"><div class="script">come solo, leave with friends</div><h2>Happy faces</h2></div>
+<!-- STORIES: once you have real traveller quotes, add them here as <blockquote class="story">"quote"<cite>Name, trip</cite></blockquote> -->
+<div class="fm"><div class="ft" id="fs"><div class="fc"><img data-i="p1" alt="Pool party"><span>Pool party</span></div><div class="fc"><img data-i="p4" alt="Feni o'clock"><span>Feni o'clock</span></div><div class="fc"><img data-i="f5" alt="Dusk squad"><span>Dusk squad</span></div><div class="fc"><img data-i="f2" alt="Feni tasting"><span>Feni tasting</span></div><div class="fc"><img data-i="p10" alt="Jamming session"><span>Jamming session</span></div><div class="fc"><img data-i="f6" alt="Sunset o'clock"><span>Sunset o'clock</span></div><div class="fc"><img data-i="p3" alt="No agenda"><span>No agenda</span></div><div class="fc"><img data-i="f8" alt="Private yacht"><span>Private yacht</span></div><div class="fc"><img data-i="p9" alt="Mangrove kayaking"><span>Mangrove kayaking</span></div><div class="fc"><img data-i="p2" alt="Beach days"><span>Beach days</span></div></div></div>
+</section>
+
+<section class="w" id="why"><div class="sc" style="--from:var(--bB)"></div><div class="wrap">
+<div class="script">the short version</div>
+<h2>Why choose Avaraa?</h2>
+<ul class="wg"><li class="wc"><img src="assets/img-02.webp" alt=""><span class="no">01</span><h3>Small groups, not a crowd</h3><p>A curated batch, so everyone actually gets to know everyone.</p></li><li class="wc"><img src="assets/img-03.webp" alt=""><span class="no">02</span><h3>A real host, not a faceless agency</h3><p>Aishwarya is with the group from check-in to goodbye.</p></li><li class="wc"><img src="assets/img-06.webp" alt=""><span class="no">03</span><h3>Solo-friendly, built for first-timers</h3><p>Come alone. Strangers become friends by the first evening.</p></li><li class="wc"><img src="assets/img-14.webp" alt=""><span class="no">04</span><h3>Safe and comfortable for solo girls</h3><p>A woman host on the ground, small groups, and stays arranged by us.</p></li><li class="wc"><img src="assets/img-12.webp" alt=""><span class="no">05</span><h3>Invite-only, so the vibe stays right</h3><p>We keep each batch curated, so you travel with people you will click with.</p></li><li class="wc"><img src="assets/img-01.webp" alt=""><span class="no">06</span><h3>An itinerary made with love</h3><p>Chorão Island, a private yacht sunset, a pool party and a jamming session.</p></li><li class="wc"><img src="assets/img-04.webp" alt=""><span class="no">07</span><h3>No hidden costs</h3><p>One clear price incl. GST, with inclusions and exclusions listed upfront.</p></li><li class="wc"><img src="assets/img-15.webp" alt=""><span class="no">08</span><h3>Hassle-free booking</h3><p>Fill the form, chat on WhatsApp, and block your slot with a ₹5,000 advance.</p></li><li class="wc"><img src="assets/img-16.webp" alt=""><span class="no">09</span><h3>Not a one-trip thing</h3><p>Goa now, then Coorg, Varkala, Kashmir and more on the way.</p></li></ul>
+<p style="text-align:center;margin:34px 0 0"><a class="btn" href="#spot">Save my spot</a></p>
+</div></section>
+
+<section class="b"><div class="sc" style="--from:var(--bW)"></div><div class="wrap">
+<h2>Who is this for?</h2>
+<p class="script" style="margin:-10px 0 18px">You've been wanting to go, but…</p>
+<div class="who">
+<div class="card">You don't really have anyone free to go with right now.</div>
+<div class="card">You want to travel solo, but doing everything alone still feels a little scary.</div>
+<div class="card">You have no idea where to stay or how to plan any of it.</div>
+<div class="card">You want people around you, just not an overwhelming crowd.</div>
+<div class="card">You're just tired, and need a few genuinely good days away.</div>
+<div class="card">You want the trip to feel like an experience, not something you had to figure out alone.</div>
+</div>
+<div class="sure">If even one of these sounds like you, you're exactly who we plan for.</div>
+</div></section>
+
+<section class="t" id="moments"><div class="sc"></div><div class="wrap">
+<h2>Moments wall</h2>
+<div class="wall">
+<figure><div class="pol"><img data-i="p7" alt="Two friends on scooters in Goa"><span>Goa on two wheels</span></div></figure>
+<figure><div class="pol"><img data-i="f4" alt="Beach cafe plate with fries and drinks above the sea"><span>Eat like a local</span></div></figure>
+<figure><div class="pol"><img data-i="p4" alt="Girl sipping feni on the beach"><span>Feni o'clock</span></div></figure>
+<figure><div class="pol"><img data-i="f1" alt="Friends sitting on a cliff watching the sunset"><span>Wish you were here</span></div></figure>
+<figure><div class="pol"><img data-i="m1" alt="Goan fish thali on a clay plate with small bowls of sides, rice and curry"><span>Thali time</span></div></figure>
+<figure><div class="pol"><img data-i="p5" alt="Uno cards in a pool"><span>Uno, but wet</span></div></figure>
+<figure><div class="pol"><img data-i="f5" alt="Friends posing on the beach at dusk"><span>Dusk squad</span></div></figure>
+<figure><div class="pol"><img data-i="m3" alt="Girl standing in the waves at sunset on a Goa beach"><span>Sun, sand, soul</span></div></figure>
+<figure><div class="pol"><img data-i="m2" alt="Crumb-fried fish thali on a steel plate with rice, sides and mint coolers"><span>Fish thali, obviously</span></div></figure>
+</div>
+<p style="text-align:center;font-size:14px;opacity:.85;margin:26px 0 0">Real photos from every trip will live here.</p>
+</div></section>
+
+<section class="b" id="faq"><div class="sc"></div><div class="wrap">
+<h2>Questions, answered</h2>
+<details><summary>Is this safe, especially for girls travelling solo?</summary><p>Trips are hosted by Aishwarya, who is with the group the whole time. Groups stay small, and stays and activities are arranged by us. You can message her on WhatsApp before you book, with any question at all.</p></details>
+<details><summary>Can I come alone, or do I need to bring someone?</summary><p>Come alone. Trips are designed so strangers become friends by the first evening.</p></details>
+<details><summary>How does payment work?</summary><p>Pay ₹5,000 to block your slot, then the balance before the deadline. Booking is confirmed only after full payment.</p></details>
+<details><summary>What's the cancellation policy?</summary><p>The advance is non-refundable in case of cancellation.</p></details>
+<details><summary>Do I need to pick a trip now, or can I just join the community?</summary><p>You can just join. Pick "Not sure yet" in the form and we'll tell you first when new dates drop.</p></details>
+</div></section>
+
+<section class="t cta" id="spot"><div class="sc"></div><div class="wrap">
+<span class="tag"><img class="sk" src="assets/img-15.webp" alt="">THIS TRIP IS INVITE-ONLY</span>
+<h2>Should I save you a spot? 👀</h2>
+<p style="margin:0">Fill this in and it opens WhatsApp with your details ready to send.</p>
+<form id="f">
+<label>Name<input name="n" required autocomplete="name"></label>
+<label>Phone<input name="p" type="tel" required autocomplete="tel"></label>
+<label>City<input name="c" required autocomplete="address-level2"></label>
+<label>Solo or group?<select name="g"><option>Solo</option><option>Group</option></select></label>
+<label>Which trip?<select name="t" id="ts"><option>Goa (17–20 Oct)</option><option>Coorg</option><option>Varkala</option><option>Kashmir</option><option>Not sure yet</option></select></label>
+<button class="btn" type="submit">Save my spot</button>
+</form>
+</div></section>
+
+<footer class="b"><div class="sc"></div><div class="wrap">
+<img class="stamp" src="assets/img-17.webp" alt="Time to travel stamp">
+<a class="logo" href="#top">AVARAA<small>KOMMUNITY</small></a>
+<div class="links"><a href="#">Instagram</a><a href="#spot">WhatsApp</a><a href="#">Privacy Policy</a><a href="#">Terms &amp; Cancellation</a></div>
+<small>Goa is onnn!!!</small>
+</div></footer>
+
+<script>
+var IMG={m1:"assets/img-m1.webp",m2:"assets/img-m2.webp",m3:"assets/img-m3.webp",aish:"assets/img-aish.webp",f1:"assets/img-f1.webp",f2:"assets/img-f2.webp",f3:"assets/img-f3.webp",f4:"assets/img-f4.webp",f5:"assets/img-f5.webp",f6:"assets/img-f6.webp",f7:"assets/img-f7.webp",f8:"assets/img-f8.webp",trek:"assets/img-trek.webp",p1:"assets/img-p1.webp",p2:"assets/img-p2.webp",p3:"assets/img-p3.webp",p4:"assets/img-p4.webp",p5:"assets/img-p5.webp",p7:"assets/img-p7.webp",p8:"assets/img-p8.webp",p9:"assets/img-p9.webp",p10:"assets/img-p10.webp",p11:"assets/img-p11.webp",p12:"assets/img-p12.webp",p13:"assets/img-p13.webp"};
+document.querySelectorAll("img[data-i]").forEach(function(i){i.src=IMG[i.dataset.i]});
+(function(){
+var fs=document.getElementById("fs");
+if(fs){var h=fs.innerHTML;fs.insertAdjacentHTML("beforeend",h);
+fs.querySelectorAll("img[data-i]").forEach(function(i){i.src=IMG[i.dataset.i]});
+[].slice.call(fs.children).slice(fs.children.length/2).forEach(function(c){c.setAttribute("aria-hidden","true")})}
+var cur=null;
+function stop(){if(!cur)return;cur.classList.remove("on");var v=cur.querySelector("video");if(v)v.pause();var f=cur.querySelector("iframe");if(f)f.remove();cur=null}
+document.querySelectorAll(".reel").forEach(function(r){
+var v=r.dataset.v,yt=r.dataset.yt;if(!v&&!yt)return;
+r.classList.add("live");var so=r.querySelector(".soon");if(so)so.remove();
+var b=r.querySelector(".rf");b.tabIndex=0;b.setAttribute("role","button");b.setAttribute("aria-label","Play reel: "+r.dataset.t);
+function go(){
+if(cur===r){var vv=r.querySelector("video");if(vv){if(vv.paused){vv.play()}else{vv.pause()}r.classList.toggle("on",!vv.paused)}return}
+stop();cur=r;r.classList.add("on");
+if(yt){var f=document.createElement("iframe");f.src="https://www.youtube.com/embed/"+yt+"?autoplay=1&playsinline=1&rel=0&loop=1&playlist="+yt;f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;b.appendChild(f)}
+else{var d=r.querySelector("video");if(!d){d=document.createElement("video");d.src=v;d.loop=true;d.playsInline=true;d.setAttribute("playsinline","");d.preload="metadata";d.poster=r.querySelector("img").src;b.appendChild(d)}d.play()}}
+b.addEventListener("click",go);
+b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}})});
+})();
+
+var WA="91XXXXXXXXXX"; // replace with the community WhatsApp number (country code + number)
+var m=document.getElementById("mq"),s=m.textContent;m.innerHTML="<span>"+s.repeat(3)+"</span><span>"+s.repeat(3)+"</span>";
+document.querySelectorAll(".tabs button").forEach(function(b){b.addEventListener("click",function(){
+document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+document.querySelectorAll(".day").forEach(function(d,i){d.classList.toggle("on",i==b.dataset.d)})})});
+document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){
+document.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed",x===c)});
+document.querySelectorAll(".trip").forEach(function(t){t.hidden=!(c.dataset.f=="all"||t.dataset.t.indexOf(c.dataset.f)>-1)})})});
+document.querySelectorAll("[data-trip]").forEach(function(a){a.addEventListener("click",function(){document.getElementById("ts").value=a.dataset.trip})});
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();var d=new FormData(e.target);
+var t="Hi! Please save me a spot.\nName: "+d.get("n")+"\nPhone: "+d.get("p")+"\nCity: "+d.get("c")+"\nTravelling: "+d.get("g")+"\nTrip: "+d.get("t");
+window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(t),"_blank")});
+</script>
+</body>
+</html>
